@@ -20,7 +20,7 @@ FULL_COPY = [
 # Точечные правки внутри файлов, которые в остальном должны остаться
 # боевыми — там код, а не только данные. Каждый патч содержит и "prod",
 # и "test" вид строки: если найден "test" — уже применено, пропускаем;
-# если найден "prod" — патчим; если не найдено ни то ни другое — файл
+# если найден "prod" — патчим; если не найдено ни то, ни другое — файл
 # поменялся в разработке, останавливаемся и просим обновить рецепт.
 LINE_PATCHES = [
     {
@@ -47,6 +47,29 @@ LINE_PATCHES = [
         "file": "src/project/module_ch_api_gateway/infrastructure/feed_list_mirror_client.py",
         "prod": '    "ALTER TABLE feedgen.feed_list_mirror_data "\n',
         "test": '    "ALTER TABLE feedgen.feed_list_mirror "\n',
+    },
+    {
+        "file": "src/project/module_data_collector/main.py",
+        "prod": (
+            "        try:\n"
+            "            if config.get(\"targeted_ab_client\", {}).get(\"url\"):\n"
+            "                targeted = TargetedAbProducer(nc, config, lifecycle)\n"
+            "                tasks.append(asyncio.create_task(targeted.start()))\n"
+            "            else:\n"
+            "                logger.info(\"action=targeted_ipban_skipped reason=not_configured\")\n"
+            "        except Exception as e:\n"
+            "            logger.error(\"action=targeted_ipban_init_failed error=%s\", str(e))\n"
+        ),
+        "test": (
+            "        # try:  # <- закомментировано скриптом для теста (новый ipban-источник отключён)\n"
+            "        #     if config.get(\"targeted_ab_client\", {}).get(\"url\"):\n"
+            "        #         targeted = TargetedAbProducer(nc, config, lifecycle)\n"
+            "        #         tasks.append(asyncio.create_task(targeted.start()))\n"
+            "        #     else:\n"
+            "        #         logger.info(\"action=targeted_ipban_skipped reason=not_configured\")\n"
+            "        # except Exception as e:\n"
+            "        #     logger.error(\"action=targeted_ipban_init_failed error=%s\", str(e))\n"
+        ),
     },
 ]
 
