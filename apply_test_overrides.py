@@ -75,6 +75,16 @@ LINE_PATCHES = [
         "prod": 'export const API_BASE = "http://10.25.86.13:8000";\n',
         "test": 'export const API_BASE = "http://192.168.100.113:8001";\n',
     },
+    {
+        "file": "src/project/module_ch_api_gateway/infrastructure/reputation_calc_client.py",
+        "prod": "              INSERT INTO feedgen.ip_reputation_calcs_data\n",
+        "test": "              INSERT INTO feedgen.ip_reputation_calcs\n",
+    },
+    {
+        "file": "src/project/module_ch_api_gateway/infrastructure/reputation_calc_client.py",
+        "prod": '_DROP_PARTITION_SQL = "ALTER TABLE feedgen.ip_reputation_calcs_data DROP PARTITION %(calc_id)s"\n',
+        "test": '_DROP_PARTITION_SQL = "ALTER TABLE feedgen.ip_reputation_calcs DROP PARTITION %(calc_id)s"\n',
+    },
 ]
 
 
