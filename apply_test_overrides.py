@@ -85,6 +85,11 @@ LINE_PATCHES = [
         "prod": '_DROP_PARTITION_SQL = "ALTER TABLE feedgen.ip_reputation_calcs_data DROP PARTITION %(calc_id)s"\n',
         "test": '_DROP_PARTITION_SQL = "ALTER TABLE feedgen.ip_reputation_calcs DROP PARTITION %(calc_id)s"\n',
     },
+    {
+        "file": "src/project/utils/reputation_sql.py",
+        "prod": 'BLOCKED_IPS_TABLE = "feedgen.blocked_ips_data"\n',
+        "test": 'BLOCKED_IPS_TABLE = "feedgen.blocked_ips"\n',
+    },
 ]
 
 
