@@ -92,11 +92,6 @@ LINE_PATCHES = [
     },
     {
         "file": "src/project/utils/reputation_sql.py",
-        "prod": 'BLOCKED_IPS_TABLE = "feedgen.blocked_ips_data"\n',
-        "test": 'BLOCKED_IPS_TABLE = "feedgen.blocked_ips"\n',
-    },
-    {
-        "file": "src/project/utils/reputation_sql.py",
         "prod": 'GEO_CACHE_TABLE = "feedgen.ip_geo_cache_data"\n',
         "test": 'GEO_CACHE_TABLE = "feedgen.ip_geo_cache"\n',
     },
