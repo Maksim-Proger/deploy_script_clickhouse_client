@@ -90,6 +90,26 @@ LINE_PATCHES = [
         "prod": 'BLOCKED_IPS_TABLE = "feedgen.blocked_ips_data"\n',
         "test": 'BLOCKED_IPS_TABLE = "feedgen.blocked_ips"\n',
     },
+    {
+        "file": "src/project/utils/reputation_sql.py",
+        "prod": 'BLOCKED_IPS_TABLE = "feedgen.blocked_ips_data"\n',
+        "test": 'BLOCKED_IPS_TABLE = "feedgen.blocked_ips"\n',
+    },
+    {
+        "file": "src/project/utils/reputation_sql.py",
+        "prod": 'GEO_CACHE_TABLE = "feedgen.ip_geo_cache_data"\n',
+        "test": 'GEO_CACHE_TABLE = "feedgen.ip_geo_cache"\n',
+    },
+    {
+        "file": "src/project/utils/reputation_sql.py",
+        "prod": 'GEO_MATRIX_TABLE = "feedgen.geo_reputation_matrix_data"\n',
+        "test": 'GEO_MATRIX_TABLE = "feedgen.geo_reputation_matrix"\n',
+    },
+    {
+        "file": "src/project/utils/reputation_sql.py",
+        "prod": 'GEO_MATRIX_RUNS_TABLE = "feedgen.geo_reputation_matrix_runs_data"\n',
+        "test": 'GEO_MATRIX_RUNS_TABLE = "feedgen.geo_reputation_matrix_runs"\n',
+    },
 ]
 
 
