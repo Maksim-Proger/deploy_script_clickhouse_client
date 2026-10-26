@@ -48,29 +48,6 @@ LINE_PATCHES = [
         "test": '    "ALTER TABLE feedgen.feed_list_mirror "\n',
     },
     {
-        "file": "src/project/module_data_collector/main.py",
-        "prod": (
-            "        try:\n"
-            "            if config.get(\"targeted_ab_client\", {}).get(\"url\"):\n"
-            "                targeted = TargetedAbProducer(nc, config, lifecycle)\n"
-            "                tasks.append(asyncio.create_task(targeted.start()))\n"
-            "            else:\n"
-            "                logger.info(\"action=targeted_ipban_skipped reason=not_configured\")\n"
-            "        except Exception as e:\n"
-            "            logger.error(\"action=targeted_ipban_init_failed error=%s\", str(e))\n"
-        ),
-        "test": (
-            "        # try:  # <- закомментировано скриптом для теста (новый ipban-источник отключён)\n"
-            "        #     if config.get(\"targeted_ab_client\", {}).get(\"url\"):\n"
-            "        #         targeted = TargetedAbProducer(nc, config, lifecycle)\n"
-            "        #         tasks.append(asyncio.create_task(targeted.start()))\n"
-            "        #     else:\n"
-            "        #         logger.info(\"action=targeted_ipban_skipped reason=not_configured\")\n"
-            "        # except Exception as e:\n"
-            "        #     logger.error(\"action=targeted_ipban_init_failed error=%s\", str(e))\n"
-        ),
-    },
-    {
         "file": "front/scripts/auth.js",
         "prod": 'export const API_BASE = "http://10.25.86.13:8000";\n',
         "test": 'export const API_BASE = "http://192.168.100.113:8001";\n',

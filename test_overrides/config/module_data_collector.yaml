@@ -3,18 +3,17 @@ ab_client:
   interval: 60.0
   timeout: 10
 
-targeted_ab_client:
-  url: "http://10.25.78.131/targeted_ipban"
-  interval: 60.0
-  timeout: 10
-
 nats:
   url: "nats://localhost:4222"
+  raw_subject: "ch.write.raw"
   dg_consumer:
     subject: "dg.load.command"
     durable: "dg_consumer"
   pa_consumer:
     subject: "dg.pa.request"
+  web_consumer:
+    subject: "data.received"
+    durable: "web_consumer_durable"
 
 parser:
   clickhouse_dt_format: "%Y-%m-%d %H:%M:%S"
