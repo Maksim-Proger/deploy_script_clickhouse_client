@@ -18,6 +18,9 @@ nats:
   pa_subject: "dg.pa.request"
   web_subject: "data.received"
   pa_timeout_sec: 320
+  reputation_recalc_subject: "reputation.recalc"
+  reputation_status_subject: "reputation.status"
+  reputation_timeout_sec: 3
 
 clickhouse:
   host: "192.168.100.113"
@@ -43,3 +46,14 @@ postgres:
 geoip:
   country_db_path: "/opt/geoip/RU-GeoIP-Country.mmdb"
   asn_db_path:     "/opt/geoip/RU-GeoIP-ASN.mmdb"
+
+auto_lists:
+  names:
+    all: "all"
+    not_ru: "not-ru"
+    not_cis: "not-cis"
+  min_score: 50
+  cis_countries: [ "RU", "BY", "AM", "KZ", "GE", "AZ", "KG", "UZ", "TJ", "MD" ]
+  created_by: "system:auto-lists"
+  interval_sec: 60
+  retry_sec: 600
