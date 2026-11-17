@@ -82,6 +82,21 @@ LINE_PATCHES = [
         "prod": 'GEO_MATRIX_RUNS_TABLE = "feedgen.geo_reputation_matrix_runs_data"\n',
         "test": 'GEO_MATRIX_RUNS_TABLE = "feedgen.geo_reputation_matrix_runs"\n',
     },
+    {
+        "file": "src/project/module_reputation/infrastructure/ch_client.py",
+        "prod": '    "SELECT toDate(computed_at) FROM feedgen.ip_reputation_snapshots_data "\n',
+        "test": '    "SELECT toDate(computed_at) FROM feedgen.ip_reputation_snapshots "\n',
+    },
+    {
+        "file": "src/project/module_reputation/infrastructure/ch_client.py",
+        "prod": '    "SELECT DISTINCT toDate(computed_at) FROM feedgen.ip_reputation_snapshots_data "\n',
+        "test": '    "SELECT DISTINCT toDate(computed_at) FROM feedgen.ip_reputation_snapshots "\n',
+    },
+    {
+        "file": "src/project/module_reputation/infrastructure/ch_client.py",
+        "prod": '_DROP_PARTITION_SQL = "ALTER TABLE feedgen.ip_reputation_snapshots_data DROP PARTITION %(day)s"\n',
+        "test": '_DROP_PARTITION_SQL = "ALTER TABLE feedgen.ip_reputation_snapshots DROP PARTITION %(day)s"\n',
+    },
 ]
 
 
