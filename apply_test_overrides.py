@@ -5,9 +5,6 @@ from pathlib import Path
 
 OVERRIDES = Path(__file__).resolve().parent / "test_overrides"
 
-# Полная замена файла — для конфигов, где на тесте нужен
-# полностью свой набор значений. Правится редактированием файла
-# в test_overrides/, этот скрипт не трогается.
 FULL_COPY = [
     ("config/module_ch_api_gateway.yaml", "src/project/config/module_ch_api_gateway.yaml"),
     ("config/module_ch_loader.yaml", "src/project/config/module_ch_loader.yaml"),
@@ -16,11 +13,6 @@ FULL_COPY = [
     ("config/dg_sources.yaml", "src/project/config/dg_sources.yaml"),
 ]
 
-# Точечные правки внутри файлов, которые в остальном должны остаться
-# боевыми — там код, а не только данные. Каждый патч содержит и "prod",
-# и "test" вид строки: если найден "test" — уже применено, пропускаем;
-# если найден "prod" — патчим; если не найдено ни то, ни другое — файл
-# поменялся в разработке, останавливаемся и просим обновить рецепт.
 LINE_PATCHES = [
     {
         "file": "src/project/module_data_collector/main.py",
